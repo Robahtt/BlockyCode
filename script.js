@@ -239,12 +239,12 @@ $(document).ready(function () {
 });
 $(document).ready(function () {
   $("#load-joke-btn").on("click", function () {
-    $("#joke-output").text("Fetching joke...");
+    $("#joke-output").text("Fetching quote...");
 
-    $.getJSON("https://v2.jokeapi.dev/joke/Programming?type=single", function (data) {
-      $("#joke-output").html("😂 " + data.value);
+    $.getJSON("https://programming-quotes-api.herokuapp.com/quotes/random", function (data) {
+      $("#joke-output").html(`💡 "${data.en}" — <em>${data.author}</em>`);
     }).fail(function () {
-      $("#joke-output").text("⚠ Failed to load joke.");
+      $("#joke-output").text("⚠ Failed to load quote.");
     });
   });
 });
