@@ -241,7 +241,7 @@ $(document).ready(function () {
   $("#load-joke-btn").on("click", function () {
     $("#joke-output").text("Fetching joke...");
 
-    $.getJSON("https://api.chucknorris.io/jokes/random?category=dev", function (data) {
+    $.getJSON("https://v2.jokeapi.dev/joke/Programming?type=single", function (data) {
       $("#joke-output").html("😂 " + data.value);
     }).fail(function () {
       $("#joke-output").text("⚠ Failed to load joke.");
