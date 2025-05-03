@@ -241,8 +241,9 @@ $(document).ready(function () {
   $("#load-joke-btn").on("click", function () {
     $("#joke-output").text("Fetching meme...");
 
-    $.getJSON("https://meme-api.com/gimme/programmingmemes", function (data) {
-      $("#meme-output").html(`<img src="${data.url}" alt="Programming Meme" width="300">`);
+    $.getJSON("https://meme-api.com/gimme/ProgrammerHumor", function (data) {
+      $("#meme-output").html(`<img src="${data.url}" alt="Programming Meme" style="max-width:100%; border-radius:8px;">`);
+      $("#joke-output").text(""); // Clear loading text
     }).fail(function () {
       $("#meme-output").text("⚠ Failed to load meme.");
     });
