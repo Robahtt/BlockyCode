@@ -242,10 +242,11 @@ $(document).ready(function () {
     $("#joke-output").text("Fetching meme...");
 
     $.getJSON("https://meme-api.com/gimme/ProgrammerHumor", function (data) {
-      $("#meme-output").html(`<img src="${data.url}" alt="Programming Meme" style="max-width:100%; border-radius:8px;">`);
-      $("#joke-output").text(""); // Clear loading text
+      const memeUrl = data.preview?.[data.preview.length - 1] || data.url;
+      $("#meme-output").html(`<img src="${memeUrl}" alt="Programming Meme" style="max-width: 100%; border-radius: 8px;">`);
+      $("#joke-output").text("");
     }).fail(function () {
-      $("#meme-output").text("⚠ Failed to load meme.");
+      $("#joke-output").text("⚠ Failed to load meme.");
     });
   });
 });
