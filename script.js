@@ -240,15 +240,22 @@ $(document).ready(function () {
 $(document).ready(function () {
   $("#load-joke-btn").on("click", function () {
     $("#joke-output").text("Fetching meme...");
+    $("#meme-output").empty();
 
     $.getJSON("https://meme-api.com/gimme/ProgrammerHumor", function (data) {
       const memeUrl = data.preview?.[data.preview.length - 1] || data.url;
       $("#meme-output").html(`<img src="${memeUrl}" alt="Programming Meme" style="max-width: 100%; border-radius: 8px;">`);
       $("#joke-output").text("");
     }).fail(function () {
-      $("#joke-output").text("⚠ Failed to load meme.");
+      $("#joke-output").text("Meme failed. Fetching quote instead...");
+      
+      $.getJSON("https://programming-quotes-api.herokuapp.com/quotes/random", function (quoteData) {
+        $("#meme-output").html(`💬 <em>${quoteData.en}</em><br>— <strong>${quoteData.author}</strong>`);
+        $("#joke-output").text("");
+      }).fail(function () {
+        $("#joke-output").text("⚠ Failed to load both meme and quote.");
+      });
     });
   });
 });
-
 
