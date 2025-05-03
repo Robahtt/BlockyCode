@@ -239,16 +239,16 @@ $(document).ready(function () {
 });
 $(document).ready(function () {
   $("#load-joke-btn").on("click", function () {
-    $("#joke-output").text("Fetching quote...");
+    $("#joke-output").text("Fetching joke...");
 
-    $.getJSON("https://programming-quotesapi.vercel.app/api/random", function (data) {
-      if (data && data.en && data.author) {
-        $("#joke-output").html(`💡 "${data.en}" — <em>${data.author}</em>`);
+    $.getJSON("https://v2.jokeapi.dev/joke/Programming?type=single", function (data) {
+      if (data && data.joke) {
+        $("#joke-output").html("😂 " + data.joke);
       } else {
-        $("#joke-output").text("⚠ Unexpected response format.");
+        $("#joke-output").text("⚠ No joke found.");
       }
     }).fail(function () {
-      $("#joke-output").text("⚠ Failed to load quote.");
+      $("#joke-output").text("⚠ Failed to load joke.");
     });
   });
 });
