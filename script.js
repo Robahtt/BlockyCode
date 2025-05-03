@@ -239,17 +239,14 @@ $(document).ready(function () {
 });
 $(document).ready(function () {
   $("#load-joke-btn").on("click", function () {
-    $("#joke-output").text("Fetching joke...");
+    $("#joke-output").text("Fetching meme...");
 
-    $.getJSON("https://v2.jokeapi.dev/joke/Programming?type=single", function (data) {
-      if (data && data.joke) {
-        $("#joke-output").html("😂 " + data.joke);
-      } else {
-        $("#joke-output").text("⚠ No joke found.");
-      }
+    $.getJSON("https://meme-api.com/gimme/programmingmemes", function (data) {
+      $("#meme-output").html(`<img src="${data.url}" alt="Programming Meme" width="300">`);
     }).fail(function () {
-      $("#joke-output").text("⚠ Failed to load joke.");
+      $("#meme-output").text("⚠ Failed to load meme.");
     });
   });
 });
+
 
