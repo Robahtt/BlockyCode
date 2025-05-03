@@ -1,0 +1,20 @@
+the list of plugins and widgets that we used in the project:
+
+
+
+jQuery UI Draggable
+
+jQuery UI Droppable
+
+jQuery UI Dialog
+
+jQuery UI Accordion
+
+jQuery UI Tabs
+
+Slick Carousel
+
+RateYo
+
+Typed.js
+
