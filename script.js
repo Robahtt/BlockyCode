@@ -242,7 +242,11 @@ $(document).ready(function () {
     $("#joke-output").text("Fetching quote...");
 
     $.getJSON("https://programming-quotes-api.herokuapp.com/quotes/random", function (data) {
-      $("#joke-output").html(`💡 "${data.en}" — <em>${data.author}</em>`);
+      if (data && data.en && data.author) {
+        $("#joke-output").html(`💡 "${data.en}" — <em>${data.author}</em>`);
+      } else {
+        $("#joke-output").text("⚠ Unexpected response format.");
+      }
     }).fail(function () {
       $("#joke-output").text("⚠ Failed to load quote.");
     });
