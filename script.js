@@ -241,7 +241,7 @@ $(document).ready(function () {
   $("#load-joke-btn").on("click", function () {
     $("#joke-output").text("Fetching quote...");
 
-    $.getJSON("https://programming-quotes-api.herokuapp.com/quotes/random", function (data) {
+    $.getJSON("https://programming-quotesapi.vercel.app/api/random", function (data) {
       if (data && data.en && data.author) {
         $("#joke-output").html(`💡 "${data.en}" — <em>${data.author}</em>`);
       } else {
